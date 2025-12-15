@@ -1,0 +1,1445 @@
+<!doctype html>
+
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RODDS sp. z o.o. — Remonty • Modernizacje</title>
+  <meta name="description" content="RODDS sp. z o.o. — kompleksowe remonty i wykończenia wnętrz. Warszawa i okolice." />
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.09);
+      --text:#e9eef6;
+      --muted:#b7c0cf;
+      --gold:#f7c600;
+      --gold2:#ffdd55;
+      --red:#e53935;
+      --line:rgba(255,255,255,.12);
+      --shadow:0 18px 45px rgba(0,0,0,.45);
+      --radius:18px;
+      --radius2:14px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(247,198,0,.18), transparent 55%),
+        radial-gradient(900px 500px at 85% 10%, rgba(229,57,53,.12), transparent 55%),
+        linear-gradient(180deg, #070a0f 0%, var(--bg) 60%, #070a0f 100%);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{width:min(var(--max), calc(100% - 40px)); margin:0 auto}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,10,15,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .top{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width:220px;
+    }
+    .logo{
+      width:44px; height:44px; border-radius:12px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.28), transparent 55%),
+        linear-gradient(135deg, rgba(247,198,0,.95), rgba(229,57,53,.7));
+      box-shadow: 0 12px 30px rgba(247,198,0,.18);
+      display:grid; place-items:center;
+      font-weight:900; color:#121212;
+      letter-spacing:.5px;
+      user-select:none;
+    }
+    .brand h1{
+      margin:0;
+      font-size:14px;
+      line-height:1.15;
+      letter-spacing:.5px;
+      text-transform:uppercase;
+    }
+    .brand small{
+      display:block;
+      margin-top:2px;
+      color:var(--muted);
+      font-size:12px;
+      letter-spacing:.3px;
+      text-transform:none;
+    }
+
+    nav{display:flex; align-items:center; gap:14px}
+    nav a{
+      padding:10px 12px;
+      border-radius:12px;
+      color:var(--muted);
+      font-weight:650;
+      letter-spacing:.2px;
+      transition:.2s ease;
+    }
+    nav a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+
+    .cta{display:flex; align-items:center; gap:10px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:750;
+      letter-spacing:.2px;
+      transition:.2s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.09)}
+    .btn.red{
+      border-color:rgba(229,57,53,.4);
+      background: linear-gradient(135deg, rgba(229,57,53,.95), rgba(247,198,0,.35));
+      color:#0b0f14;
+    }
+    .btn.red:hover{filter:saturate(1.1); transform:translateY(-1px)}
+    .mini{
+      display:none;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      cursor:pointer;
+      color:var(--text);
+      font-weight:900;
+    }
+
+    /* Mobile dropdown */
+    .mobileNav{display:none; padding:0 0 14px}
+    .mobileNav.open{display:block}
+    .mobileNav a{
+      display:block;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      margin-top:10px;
+      color:var(--muted);
+      font-weight:750;
+    }
+    .mobileNav a:hover{color:var(--text); background:rgba(255,255,255,.08)}
+
+    /* Hero */
+    .hero{padding:56px 0 22px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .heroCard{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .heroCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 260px at 20% 10%, rgba(247,198,0,.22), transparent 55%),
+        radial-gradient(500px 240px at 80% 15%, rgba(229,57,53,.18), transparent 55%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .heroInner{position:relative; padding:26px 26px 22px}
+
+    .kicker{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      color:var(--muted);
+      font-weight:700;
+      font-size:12px;
+      letter-spacing:.2px;
+    }
+    .dot{width:8px;height:8px;border-radius:99px;background:var(--gold); box-shadow:0 0 0 4px rgba(247,198,0,.12)}
+    .heroTitle{
+      margin:0;
+      font-size:40px;
+      line-height:1.06;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+    }
+    .heroTitle span{
+      color:var(--gold2);
+      text-shadow: 0 12px 40px rgba(247,198,0,.22);
+    }
+    .heroText{
+      margin:14px 0 18px;
+      color:var(--muted);
+      font-size:15.5px;
+      line-height:1.55;
+      max-width:70ch;
+    }
+    .heroActions{display:flex; flex-wrap:wrap; gap:10px}
+    .heroMeta{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .stat{
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      padding:12px 12px;
+    }
+    .stat b{display:block; font-size:16px; letter-spacing:.2px}
+    .stat small{display:block; margin-top:4px; color:var(--muted); font-weight:650}
+
+    .heroSide{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      min-height:340px;
+    }
+    .heroSide::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(500px 260px at 35% 20%, rgba(247,198,0,.20), transparent 60%),
+        radial-gradient(460px 240px at 70% 35%, rgba(229,57,53,.14), transparent 60%);
+      pointer-events:none;
+    }
+    .heroSideInner{
+      position:relative;
+      padding:18px;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .imgPh{
+      flex:1;
+      border-radius:16px;
+      border:1px dashed rgba(255,255,255,.22);
+      background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      display:grid;
+      place-items:center;
+      color:rgba(255,255,255,.75);
+      font-weight:750;
+      letter-spacing:.2px;
+      text-align:center;
+      padding:16px;
+    }
+    .sideInfo{
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      padding:12px;
+      color:var(--muted);
+      line-height:1.45;
+      font-size:13px;
+    }
+    .sideInfo b{color:var(--text)}
+
+    /* Sections */
+    section{padding:28px 0}
+    .sectionTitle{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:14px}
+    .sectionTitle h2{margin:0; font-size:22px; letter-spacing:.4px; text-transform:uppercase}
+    .sectionTitle p{margin:0; color:var(--muted); font-weight:650; font-size:13px; max-width:62ch}
+
+    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .card{
+      border-radius: var(--radius2);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      box-shadow: 0 14px 32px rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+    .cardHead{display:flex; gap:12px; padding:16px 16px 8px; align-items:flex-start}
+    .icon{
+      width:40px;height:40px;border-radius:14px;
+      background: linear-gradient(135deg, rgba(247,198,0,.95), rgba(229,57,53,.55));
+      display:grid; place-items:center;
+      color:#0b0f14;
+      font-weight:900;
+      box-shadow: 0 12px 30px rgba(247,198,0,.16);
+      flex:0 0 auto;
+    }
+    .cardHead h3{margin:0; font-size:15px; letter-spacing:.2px; text-transform:uppercase}
+    .cardHead small{display:block; color:var(--muted); margin-top:4px; line-height:1.45; font-weight:650; font-size:13px}
+    ul.clean{list-style:none; padding:0; margin:10px 0 0}
+    ul.clean li{
+      padding:9px 16px;
+      border-top:1px solid rgba(255,255,255,.07);
+      color:var(--muted);
+      font-weight:650;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      line-height:1.45;
+    }
+    .tick{width:10px;height:10px;border-radius:3px;background: rgba(247,198,0,.95); box-shadow: 0 0 0 4px rgba(247,198,0,.12); margin-top:4px}
+
+    .twoCol{display:grid; grid-template-columns: 1fr 1fr; gap:14px}
+    .panel{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .panel h3{margin:0 0 8px; font-size:16px; letter-spacing:.3px; text-transform:uppercase}
+    .panel p{margin:0; color:var(--muted); font-weight:650; line-height:1.55; font-size:14px}
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .badge{
+      padding:9px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      font-weight:750;
+      font-size:12px;
+      letter-spacing:.2px;
+    }
+    .badge strong{color:var(--gold2)}
+    .divider{height:1px; background:rgba(255,255,255,.1); margin:12px 0}
+
+    .listBox{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      overflow:hidden;
+    }
+    .listBox .head{display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.07)}
+    .listBox .head b{text-transform:uppercase; letter-spacing:.3px}
+    .listBox .head small{color:var(--muted); font-weight:650}
+    .scroll{max-height:260px; overflow:auto}
+    .row{display:flex; gap:12px; padding:12px 16px; border-bottom:1px solid rgba(255,255,255,.07); color:var(--muted); font-weight:650}
+    .row:last-child{border-bottom:0}
+    .row .year{min-width:92px; color:rgba(255,255,255,.85); font-weight:800}
+
+    .contactGrid{display:grid; grid-template-columns: 1.2fr .8fr; gap:14px; align-items:start}
+    .form{display:grid; gap:10px; margin-top:10px}
+    .field{display:grid; gap:6px}
+    label{font-weight:750; color:rgba(255,255,255,.9); font-size:13px; letter-spacing:.2px}
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.22);
+      color:var(--text);
+      outline:none;
+      font-weight:650;
+    }
+    input:focus, textarea:focus{border-color: rgba(247,198,0,.55); box-shadow: 0 0 0 5px rgba(247,198,0,.10)}
+    textarea{min-height:120px; resize:vertical}
+    .contactLine{display:grid; gap:10px; margin-top:10px; color:var(--muted); font-weight:650; line-height:1.55}
+    .contactLine a{color:var(--text); font-weight:800}
+
+    footer{
+      padding:18px 0 30px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-weight:650;
+      font-size:13px;
+      background: rgba(7,10,15,.55);
+    }
+
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns: 1fr}
+      .heroSide{min-height:280px}
+      .grid3{grid-template-columns: 1fr}
+      .twoCol{grid-template-columns: 1fr}
+      .contactGrid{grid-template-columns: 1fr}
+      nav{display:none}
+      .mini{display:inline-flex}
+      .heroTitle{font-size:34px}
+      .heroMeta{grid-template-columns: 1fr}
+    }
+
+    /* ===== GALERIA ===== */
+    .filters{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin: 10px 0 16px;
+    }
+    .chip{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      font-weight:800;
+      letter-spacing:.2px;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+    .chip:hover{ background:rgba(255,255,255,.08); color:var(--text); transform:translateY(-1px); }
+    .chip.active{
+      color:#0b0f14;
+      border-color:rgba(247,198,0,.55);
+      background: linear-gradient(135deg, rgba(247,198,0,.95), rgba(229,57,53,.35));
+      box-shadow: 0 12px 30px rgba(247,198,0,.14);
+    }
+
+    .galleryGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+
+    .gCard{
+      border-radius: var(--radius2);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      overflow:hidden;
+      box-shadow: 0 14px 32px rgba(0,0,0,.22);
+      transition:.2s ease;
+      display:block;
+    }
+    .gCard:hover{ transform: translateY(-2px); background:rgba(255,255,255,.07); }
+
+    .gImg{
+      height:170px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding:14px;
+      font-weight:850;
+      color:rgba(255,255,255,.75);
+      border-bottom:1px solid rgba(255,255,255,.07);
+      background:
+        radial-gradient(500px 240px at 30% 20%, rgba(247,198,0,.18), transparent 60%),
+        radial-gradient(420px 240px at 70% 30%, rgba(229,57,53,.12), transparent 60%),
+        linear-gradient(135deg, rgba(255,255,255,.05), rgba(0,0,0,.15));
+    }
+
+    .gImg img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:10px;
+    }
+    .heroPhoto{
+  padding:0;
+  overflow:hidden;
+}
+.heroPhoto img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  border-radius:16px;
+}
+    .gBody{ padding:12px 14px 14px; }
+    .gBody b{ display:block; letter-spacing:.2px; text-transform:uppercase; }
+    .gBody small{ display:block; margin-top:6px; color:var(--muted); font-weight:650; line-height:1.45; }
+    .gHint{ margin-top:10px; color:rgba(255,255,255,.65); font-weight:650; font-size:13px; }
+
+    @media (max-width: 980px){
+      .galleryGrid{ grid-template-columns: 1fr; }
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background: rgba(0,0,0,.72);
+      z-index:9999;
+      padding:18px;
+    }
+    .lightbox.open{ display:flex; }
+
+    .lbBox{
+      width:min(1000px, 100%);
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(10,14,20,.86);
+      box-shadow: 0 30px 80px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    .lbTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 12px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .lbTitle{
+      color:rgba(255,255,255,.9);
+      font-weight:800;
+      letter-spacing:.2px;
+      font-size:13px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+    .lbClose{
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      border-radius:12px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .lbClose:hover{ background:rgba(255,255,255,.09); }
+
+    .lbStage{
+      position:relative;
+      background:rgba(0,0,0,.25);
+      height:min(70vh, 620px);
+      display:grid;
+      place-items:center;
+    }
+    .lbStage img{
+      max-width:100%;
+      max-height:100%;
+      object-fit:contain;
+      display:block;
+    }
+
+    .lbNav{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      font-size:20px;
+      font-weight:900;
+    }
+    .lbNav:hover{ background:rgba(255,255,255,.10); }
+    .lbPrev{ left:10px; }
+    .lbNext{ right:10px; }
+
+    .lbFoot{
+      padding:10px 12px;
+      color:rgba(255,255,255,.65);
+      font-weight:650;
+      font-size:12px;
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <div class="logo">R</div>
+        <div>
+          <h1>RODDS sp. z o.o.<small>Remonty • Modernizacje • Projekty • Inwestycje</small></h1>
+        </div>
+      </div>
+
+      <nav aria-label="Nawigacja">
+        <a href="#oferta">Oferta</a>
+        <a href="#o-nas">O nas</a>
+        <a href="#realizacje">Realizacje</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+
+      <div class="cta">
+        <a class="btn" href="tel:+48504822700">Zadzwoń: +48 504 822 700</a>
+        <a class="btn red" href="#kontakt">Bezpłatna wycena</a>
+        <button class="mini" id="menuBtn" aria-label="Menu">☰</button>
+      </div>
+    </div>
+
+    <div class="mobileNav" id="mobileNav">
+      <a href="#oferta">Oferta</a>
+      <a href="#o-nas">O nas</a>
+      <a href="#realizacje">Realizacje</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="start">
+    <div class="wrap">
+      <div class="heroGrid">
+        <div class="heroCard">
+          <div class="heroInner">
+            <div class="kicker">
+              <span class="pill"><span class="dot"></span> Warszawa i okolice</span>
+              <span class="pill">Kompleksowe remonty</span>
+              <span class="pill">2-letnia gwarancja</span>
+            </div>
+
+            <h2 class="heroTitle">
+              Solidne <span>wykończenia</span> i remonty<br/>od A do Z
+            </h2>
+
+            <p class="heroText">
+              Realizujemy inwestycje w pełnym zakresie: kosztorysy, projekty i aranżacje,
+              roboty budowlane oraz instalatorskie (elektryczne, wod-kan, gazowe, c.o.,
+              klimatyzacja, alarmy).
+            </p>
+
+            <div class="heroActions">
+              <a class="btn red" href="#kontakt">Zamów wycenę</a>
+              <a class="btn" href="#oferta">Zobacz ofertę</a>
+              <a class="btn" href="mailto:rodds@onet.eu">Napisz: rodds@onet.eu</a>
+            </div>
+
+            <div class="heroMeta">
+              <div class="stat">
+                <b>Niezmienność cen</b>
+                <small>w stosunku do ustaleń początkowych</small>
+              </div>
+              <div class="stat">
+                <b>Wysoki standard</b>
+                <small>i terminowość realizacji</small>
+              </div>
+              <div class="stat">
+                <b>2 lata gwarancji</b>
+                <small>na wykonane usługi</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="heroSide">
+          <div class="heroSideInner">
+            <div class="imgPh heroPhoto">
+              <img src="hero/hero.jpg" alt="RODDS — realizacja" />
+            </div>
+
+            <div class="sideInfo">
+              <b>Adres:</b> ul. Barkocińska 6, 03-543 Warszawa<br/>
+              <b>Telefon:</b> +48 504 822 700, +48 577 144 090<br/>
+              <b>NIP:</b> 524-302-99-40 &nbsp; <b>REGON:</b> 540835583
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="oferta">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <div>
+          <h2>Nasza oferta</h2>
+          <p>Kompleksowa realizacja każdej inwestycji — od projektu po wykonanie.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <article class="card">
+          <div class="cardHead">
+            <div class="icon">1</div>
+            <div>
+              <h3>Wykończenia wnętrz</h3>
+              <small>Pełny zakres prac wykończeniowych.</small>
+            </div>
+          </div>
+          <ul class="clean">
+            <li><span class="tick"></span> Tynkowanie, gładzie, tapetowanie</li>
+            <li><span class="tick"></span> Malowanie</li>
+            <li><span class="tick"></span> Montaż ścianek GK, sufity podwieszane</li>
+            <li><span class="tick"></span> Panele, glazura, terakota, gres</li>
+            <li><span class="tick"></span> Poziomowanie podłóg, parkiet (finisz)</li>
+            <li><span class="tick"></span> Klimatyzacja</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="cardHead">
+            <div class="icon">2</div>
+            <div>
+              <h3>Remonty</h3>
+              <small>Gruntowne remonty + prace specjalistyczne.</small>
+            </div>
+          </div>
+          <ul class="clean">
+            <li><span class="tick"></span> Przeróbki budowlane</li>
+            <li><span class="tick"></span> Montaż sejfów i szaf pancernych</li>
+            <li><span class="tick"></span> Adaptacje pomieszczeń</li>
+            <li><span class="tick"></span> Izolacja akustyczna</li>
+            <li><span class="tick"></span> Dostosowanie dla osób niepełnosprawnych</li>
+            <li><span class="tick"></span> Instalacje elektryczne/hydrauliczne/grzewcze</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="cardHead">
+            <div class="icon">3</div>
+            <div>
+              <h3>Instalacje i projekty</h3>
+              <small>Kosztorysy, projekty, instalacje.</small>
+            </div>
+          </div>
+          <ul class="clean">
+            <li><span class="tick"></span> Kosztorysy, projekty i aranżacje</li>
+            <li><span class="tick"></span> Elektryka, wod-kan, gaz, c.o.</li>
+            <li><span class="tick"></span> Klimatyzacja, alarmy</li>
+            <li><span class="tick"></span> Roboty ziemne i budowlane</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="o-nas">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <div>
+          <h2>O firmie</h2>
+          <p>Doświadczenie + estetyka + funkcjonalność.</p>
+        </div>
+      </div>
+
+      <div class="twoCol">
+        <div class="panel">
+          <h3>Kim jesteśmy</h3>
+          <p>
+            RODDS realizuje usługi budowlane w pełnym zakresie — dla osób fizycznych,
+            inwestorów prywatnych i spółdzielczych oraz instytucji.
+          </p>
+          <div class="badges">
+            <span class="badge"><strong>✓</strong> Terminowość</span>
+            <span class="badge"><strong>✓</strong> Wysoki standard</span>
+            <span class="badge"><strong>✓</strong> 2 lata gwarancji</span>
+            <span class="badge"><strong>✓</strong> Stałe ustalenia cen</span>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Służymy radą w</h3>
+          <p>
+            Doborze materiałów, zagospodarowaniu przestrzeni, aranżacji i adaptacji wnętrz,
+            budownictwie ekologicznym oraz rozwiązaniach „dom inteligentny”.
+          </p>
+          <div class="divider"></div>
+          <p><b style="color:var(--gold2)">Zapewniamy:</b> niezmienność cen, wysoki standard i terminowość.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="realizacje">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <div>
+          <h2>Wybrane realizacje</h2>
+          <p>Lista obiektów/klientów (przewijana).</p>
+        </div>
+      </div>
+
+      <div class="listBox">
+        <div class="head">
+          <b>Realizacje</b>
+          <small>przewiń listę</small>
+        </div>
+
+        <div class="scroll">
+          <div class="row"><div class="year">1997–2003</div><div>GP Bis Sp. z o.o., Warszawa, Al. Stanów Zjednoczonych</div></div>
+          <div class="row"><div class="year">1997–2008</div><div>Optimus Business Park, Warszawa, ul. Wynalazek 4</div></div>
+          <div class="row"><div class="year">2001–2003</div><div>EuRoPol GAZ S.A., Warszawa, Al. Stanów Zjednoczonych</div></div>
+          <div class="row"><div class="year">2005–2007</div><div>Curtis Plaza, Warszawa, ul. Wołoska</div></div>
+          <div class="row"><div class="year">2006–2008</div><div>ABB — Fabryka Koncernu Przasnysz</div></div>
+          <div class="row"><div class="year">2006–2007</div><div>Urząd Skarbowy Warszawa-Ursynów, ul. Wynalazek 3</div></div>
+          <div class="row"><div class="year">2007–2008</div><div>L'Oréal Polska Sp. z o.o., Warszawa, ul. Domaniewska 4</div></div>
+          <div class="row"><div class="year">2022/2023</div><div>Vincent Cafe, Warszawa</div></div>
+          <div class="row"><div class="year">2017</div><div>Pur Pur Caffe, Warszawa</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <div>
+          <h2>Galeria realizacji</h2>
+          <p>Wybierz kategorię i zobacz przykłady prac. Zdjęcia dodamy później.</p>
+        </div>
+      </div>
+
+      <div class="filters" role="tablist" aria-label="Kategorie galerii">
+        <button class="chip active" data-filter="all" role="tab" aria-selected="true">Wszystko</button>
+        <button class="chip" data-filter="meble" role="tab">Renowacja mebli</button>
+        <button class="chip" data-filter="klatki" role="tab">Renowacja klatek schodowych</button>
+        <button class="chip" data-filter="segmenty" role="tab">Segmenty / Grodzisk</button>
+        <button class="chip" data-filter="kuchnia" role="tab">Kuchnia</button>
+        <button class="chip" data-filter="kuchnia-koniec" role="tab">Kuchnia (koniec)</button>
+        <button class="chip" data-filter="restauracja" role="tab">Restauracja</button>
+        <button class="chip" data-filter="spa" role="tab">Spa</button>
+      </div>
+
+      <!-- ✅ Виправлено: ТУТ ТІЛЬКИ ОДИН galleryGrid -->
+      <div class="galleryGrid" id="galleryGrid">
+
+        <a class="gCard" href="imgrenowacja/renowacja-1.JPG" data-cat="meble" data-title="Renowacja mebli — zdjęcie 1">
+          <div class="gImg"><img src="imgrenowacja/renowacja-1.JPG" alt=""></div>
+          <div class="gBody"><b>Renowacja mebli</b><small>Przykład 1</small></div>
+        </a>
+
+        <a class="gCard" href="imgrenowacja/renowacja-2.JPG" data-cat="meble" data-title="Renowacja mebli — zdjęcie 2">
+          <div class="gImg"><img src="imgrenowacja/renowacja-2.JPG" alt=""></div>
+          <div class="gBody"><b>Renowacja mebli</b><small>Przykład 2</small></div>
+        </a>
+
+        <a class="gCard" href="imgrenowacja/renowacja-3.JPG" data-cat="meble" data-title="Renowacja mebli — zdjęcie 3">
+          <div class="gImg"><img src="imgrenowacja/renowacja-3.JPG" alt=""></div>
+          <div class="gBody"><b>Renowacja mebli</b><small>Przykład 3</small></div>
+        </a>
+
+        <a class="gCard" href="imgrenowacja/renowacja-4.JPG" data-cat="meble" data-title="Renowacja mebli — zdjęcie 4">
+          <div class="gImg"><img src="imgrenowacja/renowacja-4.JPG" alt=""></div>
+          <div class="gBody"><b>Renowacja mebli</b><small>Przykład 4</small></div>
+        </a>
+
+        <a class="gCard" href="imgrenowacja/renowacja-5.JPG" data-cat="meble" data-title="Renowacja mebli — zdjęcie 5">
+          <div class="gImg"><img src="imgrenowacja/renowacja-5.JPG" alt=""></div>
+          <div class="gBody"><b>Renowacja mebli</b><small>Przykład 5</small></div>
+        </a>
+
+        <a class="gCard" href="imgrenowacja/renowacja-6.JPG" data-cat="meble" data-title="Renowacja mebli — zdjęcie 6">
+          <div class="gImg"><img src="imgrenowacja/renowacja-6.JPG" alt=""></div>
+          <div class="gBody"><b>Renowacja mebli</b><small>Przykład 6</small></div>
+        </a>
+
+        <a class="gCard" href="imgrenowacja/renowacja-7.JPG" data-cat="meble" data-title="Renowacja mebli — zdjęcie 7">
+          <div class="gImg"><img src="imgrenowacja/renowacja-7.JPG" alt=""></div>
+          <div class="gBody"><b>Renowacja mebli</b><small>Przykład 7</small></div>
+        </a>
+
+        <a class="gCard" href="imgrenowacja/renowacja-8.JPG" data-cat="meble" data-title="Renowacja mebli — zdjęcie 8">
+          <div class="gImg"><img src="imgrenowacja/renowacja-8.JPG" alt=""></div>
+          <div class="gBody"><b>Renowacja mebli</b><small>Przykład 8</small></div>
+        </a>
+
+        <!-- Плейсхолдери лишив як були -->
+        <a class="gCard" href="renowacjaklatek/klatek-1.JPG" data-cat="klatki" data-title="Renowacja klatek schodowych — zdjęcie 1">
+          <div class="gImg">
+            <img src="renowacjaklatek/klatek-1.JPG" alt="Renowacja klatki schodowej 1">
+          </div>
+          <div class="gBody">
+            <b>Renowacja klatek schodowych</b>
+            <small>Przykład 1</small>
+          </div>
+        </a>
+        
+        <a class="gCard" href="renowacjaklatek/klatek-2.JPG" data-cat="klatki" data-title="Renowacja klatek schodowych — zdjęcie 2">
+          <div class="gImg">
+            <img src="renowacjaklatek/klatek-2.JPG" alt="Renowacja klatki schodowej 2">
+          </div>
+          <div class="gBody">
+            <b>Renowacja klatek schodowych</b>
+            <small>Przykład 2</small>
+          </div>
+        </a>
+        
+        <a class="gCard" href="renowacjaklatek/klatek-3.JPG" data-cat="klatki" data-title="Renowacja klatek schodowych — zdjęcie 3">
+          <div class="gImg">
+            <img src="renowacjaklatek/klatek-3.JPG" alt="Renowacja klatki schodowej 3">
+          </div>
+          <div class="gBody">
+            <b>Renowacja klatek schodowych</b>
+            <small>Przykład 3</small>
+          </div>
+        </a>
+
+        <a class="gCard" href="segmenty/segmenty-1.JPG" data-cat="segmenty" data-title="Segmenty – ogródek — zdjęcie 1">
+          <div class="gImg"><img src="segmenty/segmenty-1.JPG" alt="Segmenty ogródek 1"></div>
+          <div class="gBody"><b>Segmenty – ogródek</b><small>Przykład 1</small></div>
+        </a>
+        
+        <a class="gCard" href="segmenty/segmenty-2.JPG" data-cat="segmenty" data-title="Segmenty – ogródek — zdjęcie 2">
+          <div class="gImg"><img src="segmenty/segmenty-2.JPG" alt="Segmenty ogródek 2"></div>
+          <div class="gBody"><b>Segmenty – ogródek</b><small>Przykład 2</small></div>
+        </a>
+        
+        <a class="gCard" href="segmenty/segmenty-3.JPG" data-cat="segmenty" data-title="Segmenty – ogródek — zdjęcie 3">
+          <div class="gImg"><img src="segmenty/segmenty-3.JPG" alt="Segmenty ogródek 3"></div>
+          <div class="gBody"><b>Segmenty – ogródek</b><small>Przykład 3</small></div>
+        </a>
+        
+        <a class="gCard" href="segmenty/segmenty-4.JPG" data-cat="segmenty" data-title="Segmenty – ogródek — zdjęcie 4">
+          <div class="gImg"><img src="segmenty/segmenty-4.JPG" alt="Segmenty ogródek 4"></div>
+          <div class="gBody"><b>Segmenty – ogródek</b><small>Przykład 4</small></div>
+        </a>
+        
+        <a class="gCard" href="segmenty/segmenty-5.JPG" data-cat="segmenty" data-title="Segmenty – ogródek — zdjęcie 5">
+          <div class="gImg"><img src="segmenty/segmenty-5.JPG" alt="Segmenty ogródek 5"></div>
+          <div class="gBody"><b>Segmenty – ogródek</b><small>Przykład 5</small></div>
+        </a>
+        
+        <a class="gCard" href="segmenty/segmenty-6.JPG" data-cat="segmenty" data-title="Segmenty – ogródek — zdjęcie 6">
+          <div class="gImg"><img src="segmenty/segmenty-6.JPG" alt="Segmenty ogródek 6"></div>
+          <div class="gBody"><b>Segmenty – ogródek</b><small>Przykład 6</small></div>
+        </a>
+        
+        <a class="gCard" href="segmenty/segmenty-7.JPG" data-cat="segmenty" data-title="Segmenty – ogródek — zdjęcie 7">
+          <div class="gImg"><img src="segmenty/segmenty-7.JPG" alt="Segmenty ogródek 7"></div>
+          <div class="gBody"><b>Segmenty – ogródek</b><small>Przykład 7</small></div>
+        </a>
+        
+        <a class="gCard" href="segmenty/segmenty-8.JPG" data-cat="segmenty" data-title="Segmenty – ogródek — zdjęcie 8">
+          <div class="gImg"><img src="segmenty/segmenty-8.JPG" alt="Segmenty ogródek 8"></div>
+          <div class="gBody"><b>Segmenty – ogródek</b><small>Przykład 8</small></div>
+        </a>
+        
+        <a class="gCard" href="segmenty/segmenty-9.JPG" data-cat="segmenty" data-title="Segmenty – ogródek — zdjęcie 9">
+          <div class="gImg"><img src="segmenty/segmenty-9.JPG" alt="Segmenty ogródek 9"></div>
+          <div class="gBody"><b>Segmenty – ogródek</b><small>Przykład 9</small></div>
+        </a>
+        
+        <a class="gCard" href="segmenty/segmenty-10.JPG" data-cat="segmenty" data-title="Segmenty – ogródek — zdjęcie 10">
+          <div class="gImg"><img src="segmenty/segmenty-10.JPG" alt="Segmenty ogródek 10"></div>
+          <div class="gBody"><b>Segmenty – ogródek</b><small>Przykład 10</small></div>
+        </a>
+        
+        <a class="gCard" href="segmenty/segmenty-11.JPG" data-cat="segmenty" data-title="Segmenty – ogródek — zdjęcie 11">
+          <div class="gImg"><img src="segmenty/segmenty-11.JPG" alt="Segmenty ogródek 11"></div>
+          <div class="gBody"><b>Segmenty – ogródek</b><small>Przykład 11</small></div>
+        </a>
+
+        <!-- KUCHNIA 1–10 -->
+<a class="gCard" href="kuchnia/kuchnia-1.JPG" data-cat="kuchnia" data-title="Kuchnia — zdjęcie 1">
+  <div class="gImg"><img src="kuchnia/kuchnia-1.JPG" alt="Kuchnia 1"></div>
+  <div class="gBody"><b>Kuchnia</b><small>Przykład 1</small></div>
+</a>
+
+<a class="gCard" href="kuchnia/kuchnia-2.JPG" data-cat="kuchnia" data-title="Kuchnia — zdjęcie 2">
+  <div class="gImg"><img src="kuchnia/kuchnia-2.JPG" alt="Kuchnia 2"></div>
+  <div class="gBody"><b>Kuchnia</b><small>Przykład 2</small></div>
+</a>
+
+<a class="gCard" href="kuchnia/kuchnia-3.JPG" data-cat="kuchnia" data-title="Kuchnia — zdjęcie 3">
+  <div class="gImg"><img src="kuchnia/kuchnia-3.JPG" alt="Kuchnia 3"></div>
+  <div class="gBody"><b>Kuchnia</b><small>Przykład 3</small></div>
+</a>
+
+<a class="gCard" href="kuchnia/kuchnia-4.JPG" data-cat="kuchnia" data-title="Kuchnia — zdjęcie 4">
+  <div class="gImg"><img src="kuchnia/kuchnia-4.JPG" alt="Kuchnia 4"></div>
+  <div class="gBody"><b>Kuchnia</b><small>Przykład 4</small></div>
+</a>
+
+<a class="gCard" href="kuchnia/kuchnia-5.JPG" data-cat="kuchnia" data-title="Kuchnia — zdjęcie 5">
+  <div class="gImg"><img src="kuchnia/kuchnia-5.JPG" alt="Kuchnia 5"></div>
+  <div class="gBody"><b>Kuchnia</b><small>Przykład 5</small></div>
+</a>
+
+<a class="gCard" href="kuchnia/kuchnia-6.JPG" data-cat="kuchnia" data-title="Kuchnia — zdjęcie 6">
+  <div class="gImg"><img src="kuchnia/kuchnia-6.JPG" alt="Kuchnia 6"></div>
+  <div class="gBody"><b>Kuchnia</b><small>Przykład 6</small></div>
+</a>
+
+<a class="gCard" href="kuchnia/kuchnia-7.JPG" data-cat="kuchnia" data-title="Kuchnia — zdjęcie 7">
+  <div class="gImg"><img src="kuchnia/kuchnia-7.JPG" alt="Kuchnia 7"></div>
+  <div class="gBody"><b>Kuchnia</b><small>Przykład 7</small></div>
+</a>
+
+<a class="gCard" href="kuchnia/kuchnia-8.JPG" data-cat="kuchnia" data-title="Kuchnia — zdjęcie 8">
+  <div class="gImg"><img src="kuchnia/kuchnia-8.JPG" alt="Kuchnia 8"></div>
+  <div class="gBody"><b>Kuchnia</b><small>Przykład 8</small></div>
+</a>
+
+<a class="gCard" href="kuchnia/kuchnia-9.JPG" data-cat="kuchnia" data-title="Kuchnia — zdjęcie 9">
+  <div class="gImg"><img src="kuchnia/kuchnia-9.JPG" alt="Kuchnia 9"></div>
+  <div class="gBody"><b>Kuchnia</b><small>Przykład 9</small></div>
+</a>
+
+<a class="gCard" href="kuchnia/kuchnia-10.JPG" data-cat="kuchnia" data-title="Kuchnia — zdjęcie 10">
+  <div class="gImg"><img src="kuchnia/kuchnia-10.JPG" alt="Kuchnia 10"></div>
+  <div class="gBody"><b>Kuchnia</b><small>Przykład 10</small></div>
+</a>
+
+        <!-- ===== KUCHNIA (KONIEC) ===== -->
+
+<a class="gCard" href="kuchniakoniec/kuchniaconiec-1.JPG"
+data-cat="kuchnia-koniec"
+data-title="Kuchnia – efekt końcowy 1">
+<div class="gImg">
+ <img src="kuchniakoniec/kuchniaconiec-1.JPG" alt="Kuchnia koniec 1">
+</div>
+<div class="gBody">
+ <b>Kuchnia (koniec)</b>
+ <small>Przykład 1</small>
+</div>
+</a>
+
+<a class="gCard" href="kuchniakoniec/kuchniaconiec-2.JPG"
+data-cat="kuchnia-koniec"
+data-title="Kuchnia – efekt końcowy 2">
+<div class="gImg">
+ <img src="kuchniakoniec/kuchniaconiec-2.JPG" alt="Kuchnia koniec 2">
+</div>
+<div class="gBody">
+ <b>Kuchnia (koniec)</b>
+ <small>Przykład 2</small>
+</div>
+</a>
+
+<a class="gCard" href="kuchniakoniec/kuchniaconiec-3.JPG"
+data-cat="kuchnia-koniec"
+data-title="Kuchnia – efekt końcowy 3">
+<div class="gImg">
+ <img src="kuchniakoniec/kuchniaconiec-3.JPG" alt="Kuchnia koniec 3">
+</div>
+<div class="gBody">
+ <b>Kuchnia (koniec)</b>
+ <small>Przykład 3</small>
+</div>
+</a>
+
+<a class="gCard" href="kuchniakoniec/kuchniaconiec-4.JPG"
+data-cat="kuchnia-koniec"
+data-title="Kuchnia – efekt końcowy 4">
+<div class="gImg">
+ <img src="kuchniakoniec/kuchniaconiec-4.JPG" alt="Kuchnia koniec 4">
+</div>
+<div class="gBody">
+ <b>Kuchnia (koniec)</b>
+ <small>Przykład 4</small>
+</div>
+</a>
+
+<a class="gCard" href="kuchniakoniec/kuchniaconiec-5.JPG"
+data-cat="kuchnia-koniec"
+data-title="Kuchnia – efekt końcowy 5">
+<div class="gImg">
+ <img src="kuchniakoniec/kuchniaconiec-5.JPG" alt="Kuchnia koniec 5">
+</div>
+<div class="gBody">
+ <b>Kuchnia (koniec)</b>
+ <small>Przykład 5</small>
+</div>
+</a>
+
+<a class="gCard" href="kuchniakoniec/kuchniaconiec-6.JPG"
+data-cat="kuchnia-koniec"
+data-title="Kuchnia – efekt końcowy 6">
+<div class="gImg">
+ <img src="kuchniakoniec/kuchniaconiec-6.JPG" alt="Kuchnia koniec 6">
+</div>
+<div class="gBody">
+ <b>Kuchnia (koniec)</b>
+ <small>Przykład 6</small>
+</div>
+</a>
+<!-- ===== RESTAURACJA ===== -->
+
+<a class="gCard" href="restauracja/rest-1.JPG" data-cat="restauracja" data-title="Restauracja — zdjęcie 1">
+  <div class="gImg"><img src="restauracja/rest-1.JPG" alt="Restauracja 1"></div>
+  <div class="gBody"><b>Restauracja</b><small>Przykład 1</small></div>
+</a>
+
+<a class="gCard" href="restauracja/rest-2.JPG" data-cat="restauracja" data-title="Restauracja — zdjęcie 2">
+  <div class="gImg"><img src="restauracja/rest-2.JPG" alt="Restauracja 2"></div>
+  <div class="gBody"><b>Restauracja</b><small>Przykład 2</small></div>
+</a>
+
+<a class="gCard" href="restauracja/rest-3.JPG" data-cat="restauracja" data-title="Restauracja — zdjęcie 3">
+  <div class="gImg"><img src="restauracja/rest-3.JPG" alt="Restauracja 3"></div>
+  <div class="gBody"><b>Restauracja</b><small>Przykład 3</small></div>
+</a>
+
+<a class="gCard" href="restauracja/rest-4.JPG" data-cat="restauracja" data-title="Restauracja — zdjęcie 4">
+  <div class="gImg"><img src="restauracja/rest-4.JPG" alt="Restauracja 4"></div>
+  <div class="gBody"><b>Restauracja</b><small>Przykład 4</small></div>
+</a>
+
+<a class="gCard" href="restauracja/rest-5.JPG" data-cat="restauracja" data-title="Restauracja — zdjęcie 5">
+  <div class="gImg"><img src="restauracja/rest-5.JPG" alt="Restauracja 5"></div>
+  <div class="gBody"><b>Restauracja</b><small>Przykład 5</small></div>
+</a>
+
+<a class="gCard" href="restauracja/rest-6.JPG" data-cat="restauracja" data-title="Restauracja — zdjęcie 6">
+  <div class="gImg"><img src="restauracja/rest-6.JPG" alt="Restauracja 6"></div>
+  <div class="gBody"><b>Restauracja</b><small>Przykład 6</small></div>
+</a>
+
+<a class="gCard" href="restauracja/rest-7.JPG" data-cat="restauracja" data-title="Restauracja — zdjęcie 7">
+  <div class="gImg"><img src="restauracja/rest-7.JPG" alt="Restauracja 7"></div>
+  <div class="gBody"><b>Restauracja</b><small>Przykład 7</small></div>
+</a>
+
+<a class="gCard" href="restauracja/rest-8.JPG" data-cat="restauracja" data-title="Restauracja — zdjęcie 8">
+  <div class="gImg"><img src="restauracja/rest-8.JPG" alt="Restauracja 8"></div>
+  <div class="gBody"><b>Restauracja</b><small>Przykład 8</small></div>
+</a>
+
+<a class="gCard" href="restauracja/rest-9.JPG" data-cat="restauracja" data-title="Restauracja — zdjęcie 9">
+  <div class="gImg"><img src="restauracja/rest-9.JPG" alt="Restauracja 9"></div>
+  <div class="gBody"><b>Restauracja</b><small>Przykład 9</small></div>
+</a>
+
+<a class="gCard" href="restauracja/rest-10.JPG" data-cat="restauracja" data-title="Restauracja — zdjęcie 10">
+  <div class="gImg"><img src="restauracja/rest-10.JPG" alt="Restauracja 10"></div>
+  <div class="gBody"><b>Restauracja</b><small>Przykład 10</small></div>
+</a>
+
+<a class="gCard" href="restauracja/rest-11.JPG" data-cat="restauracja" data-title="Restauracja — zdjęcie 11">
+  <div class="gImg"><img src="restauracja/rest-11.JPG" alt="Restauracja 11"></div>
+  <div class="gBody"><b>Restauracja</b><small>Przykład 11</small></div>
+</a>
+
+<a class="gCard" href="restauracja/rest-12.JPG" data-cat="restauracja" data-title="Restauracja — zdjęcie 12">
+  <div class="gImg"><img src="restauracja/rest-12.JPG" alt="Restauracja 12"></div>
+  <div class="gBody"><b>Restauracja</b><small>Przykład 12</small></div>
+</a>
+
+       <!-- SPA -->
+<a class="gCard" href="SPA/SPA-1.JPG" data-cat="spa" data-title="SPA — zdjęcie 1">
+  <div class="gImg"><img src="SPA/SPA-1.JPG" alt="SPA 1"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 1</small></div>
+</a>
+
+<a class="gCard" href="SPA/SPA-2.JPG" data-cat="spa" data-title="SPA — zdjęcie 2">
+  <div class="gImg"><img src="SPA/SPA-2.JPG" alt="SPA 2"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 2</small></div>
+</a>
+
+<a class="gCard" href="SPA/SPA-3.JPG" data-cat="spa" data-title="SPA — zdjęcie 3">
+  <div class="gImg"><img src="SPA/SPA-3.JPG" alt="SPA 3"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 3</small></div>
+</a>
+
+<a class="gCard" href="SPA/SPA-4.JPG" data-cat="spa" data-title="SPA — zdjęcie 4">
+  <div class="gImg"><img src="SPA/SPA-4.JPG" alt="SPA 4"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 4</small></div>
+</a>
+
+<a class="gCard" href="SPA/SPA-5.JPG" data-cat="spa" data-title="SPA — zdjęcie 5">
+  <div class="gImg"><img src="SPA/SPA-5.JPG" alt="SPA 5"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 5</small></div>
+</a>
+
+<a class="gCard" href="SPA/SPA-6.JPG" data-cat="spa" data-title="SPA — zdjęcie 6">
+  <div class="gImg"><img src="SPA/SPA-6.JPG" alt="SPA 6"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 6</small></div>
+</a>
+
+<a class="gCard" href="SPA/SPA-7.JPG" data-cat="spa" data-title="SPA — zdjęcie 7">
+  <div class="gImg"><img src="SPA/SPA-7.JPG" alt="SPA 7"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 7</small></div>
+</a>
+
+<a class="gCard" href="SPA/SPA-8.JPG" data-cat="spa" data-title="SPA — zdjęcie 8">
+  <div class="gImg"><img src="SPA/SPA-8.JPG" alt="SPA 8"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 8</small></div>
+</a>
+
+<a class="gCard" href="SPA/SPA-9.JPG" data-cat="spa" data-title="SPA — zdjęcie 9">
+  <div class="gImg"><img src="SPA/SPA-9.JPG" alt="SPA 9"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 9</small></div>
+</a>
+
+<a class="gCard" href="SPA/SPA-10.JPG" data-cat="spa" data-title="SPA — zdjęcie 10">
+  <div class="gImg"><img src="SPA/SPA-10.JPG" alt="SPA 10"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 10</small></div>
+</a>
+
+<a class="gCard" href="SPA/SPA-11.JPG" data-cat="spa" data-title="SPA — zdjęcie 11">
+  <div class="gImg"><img src="SPA/SPA-11.JPG" alt="SPA 11"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 11</small></div>
+</a>
+
+<a class="gCard" href="SPA/SPA-12.JPG" data-cat="spa" data-title="SPA — zdjęcie 12">
+  <div class="gImg"><img src="SPA/SPA-12.JPG" alt="SPA 12"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 12</small></div>
+</a>
+
+<a class="gCard" href="SPA/SPA-13.JPG" data-cat="spa" data-title="SPA — zdjęcie 13">
+  <div class="gImg"><img src="SPA/SPA-13.JPG" alt="SPA 13"></div>
+  <div class="gBody"><b>SPA</b><small>Przykład 13</small></div>
+</a>
+
+      </div>
+
+      <div class="gHint">
+        * Później podmienisz linki href na prawdziwe zdjęcia.
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="wrap">
+      <div class="sectionTitle">
+        <div>
+          <h2>Kontakt</h2>
+          <p>Formularz otwiera e-mail z gotową wiadomością.</p>
+        </div>
+      </div>
+
+      <div class="contactGrid">
+        <div class="panel">
+          <h3>Formularz</h3>
+
+          <form class="form" id="mailForm">
+            <div class="field">
+              <label for="name">Imię i nazwisko</label>
+              <input id="name" type="text" placeholder="np. Jan Kowalski" required />
+            </div>
+
+            <div class="field">
+              <label for="phone">Telefon</label>
+              <input id="phone" type="tel" placeholder="np. +48 600 000 000" />
+            </div>
+
+            <div class="field">
+              <label for="msg">Wiadomość</label>
+              <textarea id="msg" placeholder="Opisz metraż, lokalizację i zakres prac..." required></textarea>
+            </div>
+
+            <button class="btn red" type="submit">Wyślij zapytanie</button>
+          </form>
+        </div>
+
+        <aside class="panel">
+          <h3>Dane firmy</h3>
+          <div class="contactLine">
+            <div><b>RODDS sp. z o.o.</b></div>
+            <div>ul. Barkocińska 6<br/>03-543 Warszawa</div>
+            <div class="divider"></div>
+            <div><b>Telefon:</b><br/>
+              <a href="tel:+48504822700">+48 504 822 700</a><br/>
+              <a href="tel:+48577144090">+48 577 144 090</a>
+            </div>
+            <div><b>Email:</b><br/>
+              <a href="mailto:rodds@onet.eu">rodds@onet.eu</a>
+            </div>
+            <div class="divider"></div>
+            <div><b>NIP:</b> 524-302-99-40<br/><b>REGON:</b> 540835583</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <a class="btn" href="#start">↑ Wróć na górę</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+    <div>© <span id="y"></span> RODDS sp. z o.o. — Remonty i wykończenia</div>
+    <div style="color:rgba(255,255,255,.65)">Wersja bez wyszukiwarki • CSS wbudowany</div>
+  </div>
+</footer>
+
+<!-- ✅ Виправлено: LIGHTBOX ПЕРЕД СКРИПТОМ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lbBox" role="dialog" aria-label="Podgląd zdjęcia">
+    <div class="lbTop">
+      <div class="lbTitle" id="lbTitle">Podgląd</div>
+      <button class="lbClose" id="lbClose" type="button">✕</button>
+    </div>
+
+    <div class="lbStage">
+      <button class="lbNav lbPrev" id="lbPrev" type="button">‹</button>
+      <img id="lbImg" alt="Zdjęcie" />
+      <button class="lbNav lbNext" id="lbNext" type="button">›</button>
+    </div>
+
+    <div class="lbFoot" id="lbFoot">Strzałki / swipe / ESC</div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  if(menuBtn){
+    menuBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+  }
+
+  document.getElementById('mailForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const msg = document.getElementById('msg').value.trim();
+
+    const subject = encodeURIComponent("Zapytanie o wycenę — RODDS");
+    const body = encodeURIComponent(
+      `Imię i nazwisko: ${name}\n` +
+      `Telefon: ${phone || "-"}\n\n` +
+      `Wiadomość:\n${msg}\n\n` +
+      `— wysłano ze strony RODDS`
+    );
+    window.location.href = `mailto:rodds@onet.eu?subject=${subject}&body=${body}`;
+  });
+
+  // ===== GALERIA FILTER =====
+  const chips = document.querySelectorAll('.chip');
+  const cards = document.querySelectorAll('.gCard');
+
+  chips.forEach(btn => {
+    btn.addEventListener('click', () => {
+      chips.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      const f = btn.dataset.filter;
+
+      cards.forEach(card => {
+        const cat = card.dataset.cat;
+        const show = (f === 'all' || cat === f);
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
+
+  // ===== LIGHTBOX =====
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbTitle = document.getElementById('lbTitle');
+  const lbFoot = document.getElementById('lbFoot');
+  const lbClose = document.getElementById('lbClose');
+  const lbPrev = document.getElementById('lbPrev');
+  const lbNext = document.getElementById('lbNext');
+
+  let items = [];
+  let currentIndex = 0;
+
+  function collectVisibleItems(){
+    items = Array.from(document.querySelectorAll('.gCard'))
+      .filter(el => el.style.display !== 'none')
+      .map(el => ({
+        href: el.getAttribute('href'),
+        title: el.dataset.title || 'Podgląd',
+      }));
+  }
+
+  function openLightbox(index){
+    collectVisibleItems();
+    if(!items.length) return;
+
+    currentIndex = Math.max(0, Math.min(index, items.length - 1));
+    const it = items[currentIndex];
+
+    lbImg.src = it.href;
+    lbTitle.textContent = it.title;
+    lbFoot.textContent = `Zdjęcie ${currentIndex + 1} / ${items.length} — ESC zamyka, ← → przełączają`;
+
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(){
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+
+  function showNext(){
+    if(!items.length) return;
+    currentIndex = (currentIndex + 1) % items.length;
+    const it = items[currentIndex];
+    lbImg.src = it.href;
+    lbTitle.textContent = it.title;
+    lbFoot.textContent = `Zdjęcie ${currentIndex + 1} / ${items.length} — ESC zamyka, ← → przełączają`;
+  }
+
+  function showPrev(){
+    if(!items.length) return;
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    const it = items[currentIndex];
+    lbImg.src = it.href;
+    lbTitle.textContent = it.title;
+    lbFoot.textContent = `Zdjęcie ${currentIndex + 1} / ${items.length} — ESC zamyka, ← → przełączają`;
+  }
+
+  // click on card -> open
+  document.querySelectorAll('.gCard').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      const visible = Array.from(document.querySelectorAll('.gCard')).filter(el => el.style.display !== 'none');
+      const idx = visible.indexOf(card);
+      openLightbox(idx >= 0 ? idx : 0);
+    });
+  });
+
+  // buttons
+  lbClose.addEventListener('click', closeLightbox);
+  lbNext.addEventListener('click', showNext);
+  lbPrev.addEventListener('click', showPrev);
+
+  // click outside -> close
+  lb.addEventListener('click', (e) => {
+    if(e.target === lb) closeLightbox();
+  });
+
+  // keyboard
+  document.addEventListener('keydown', (e) => {
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowRight') showNext();
+    if(e.key === 'ArrowLeft') showPrev();
+  });
+
+  // simple swipe (mobile)
+  let touchX = null;
+  lb.addEventListener('touchstart', (e) => {
+    touchX = e.changedTouches[0].clientX;
+  }, {passive:true});
+
+  lb.addEventListener('touchend', (e) => {
+    if(touchX === null) return;
+    const endX = e.changedTouches[0].clientX;
+    const dx = endX - touchX;
+    touchX = null;
+    if(Math.abs(dx) < 40) return;
+    if(dx < 0) showNext();
+    else showPrev();
+  }, {passive:true});
+</script>
+</body>
+</html>
